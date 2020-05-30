@@ -1,6 +1,6 @@
 $(function () {
 
-  var terminal = window.NetsExample || {}
+  var terminal = window.MekoNets || {}
   var SUPPORTED_TERMINAL_TYPES = { iCT250: '34', iPP350: '32' }
   var $display = $('.js-pos-example__output-view-term-display')
   var $log = $('.js-pos-example__output-view-log-content')
@@ -168,7 +168,7 @@ $(function () {
     }
 
     terminal.onSuccess = function (payload) {
-      addLog(payload.TruncatedPan || 'Success!', 'success')
+      addLog(payload.TruncatedPan || 'Godkänt!', 'success')
       terminal.log(payload, 'onSuccess', 'green')
 
       if (printRows.length) {
@@ -191,7 +191,7 @@ $(function () {
 
   function onReady (payload) {
     terminal.log(payload, 'onReady', '#0091ff')
-    addLog(payload || 'Terminal ready!', 'ready')
+    addLog(payload || 'Terminal redo!', 'ready')
   }
 
   function onError (payload) {
@@ -217,9 +217,9 @@ $(function () {
   function isEmptyObject (obj) { return !(obj && Object.keys(obj).length) }
 
   function addLog (message, type) {
-    var timestamp = (new Date()).toLocaleTimeString()
+    var timestamp = (new Date()).toLocaleTimeString(sv-SE)
 
-    logs.unshift(`<span class="log-${type || 'default'}">${timestamp} ${message}</span>`)
+    logs.unshift(`<span class="log-${type || 'default'}">${timestamp} | ${message}</span>`)
 
     var rows = logs.slice(0, 15)
 
@@ -230,6 +230,10 @@ $(function () {
 
     if (!outputViewOpenedAtLeastOnce && !outputViewIsOpen()) {
       $('.js-pos-example__output-link').animateCss('rubberBand')
+    }
+    
+    if (!outputViewOpenedAtLeastOnce && !outputViewIsOpen()) {
+      toggleOutputView()
     }
 
     var logHtml = rows.reverse().join('<br />')
