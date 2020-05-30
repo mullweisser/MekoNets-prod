@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="css/flags.css">
   <link rel="stylesheet" href="css/animate.css">
 </head>
-<body oncontextmenu="return false;" class="js-pos-example__body__output-view-is-open">
+<body oncontextmenu="return false;">
   <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
       <div class="navbar-header">
