@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>MekoNets</title>
+  <title>MekoNets 0.1b</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,18 +21,18 @@
   <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="/">MekoNets 0.1</a>
+        <a class="navbar-brand" href="/">MekoNets 0.1b</a>
       </div>
     </div>
   </nav>
   <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand js-pos-example__output-link pos-example__output-link" href="#output">Terminal output <span class="glyphicon glyphicon-menu-up js-pos-example__output-link-indicator pos-example__output-link-indicator"></span>
+        <a class="navbar-brand js-pos-example__output-link pos-example__output-link" href="#output">Terminalfönster <span class="glyphicon glyphicon-menu-up js-pos-example__output-link-indicator pos-example__output-link-indicator"></span>
         </a>
       </div>
       <span class="js-pos-example__process-indicator pos-example__process-indicator">
-        <i class="glyphicon glyphicon-repeat spinner"></i> Waiting for terminal...
+        <i class="glyphicon glyphicon-repeat spinner"></i> Väntar på terminal...
       </span>
       <div class="js-pos-example__output-view-container pos-example__output-view-container">
         <div class="row pos-example__output-view">
@@ -47,7 +47,7 @@
             </div>
           </div>
           <div class="col-xs-3 col-xs-offset-1 pos-example__output-view-item pos-example__output-view-log-container dotted">
-            <div class="pos-example__output-view-log-header">Logs</div>
+            <div class="pos-example__output-view-log-header">Historik</div>
             <div class="js-pos-example__output-view-log-content pos-example__output-view-log-content"></div>
           </div>
         </div>
@@ -81,9 +81,9 @@
           <input type="number" class="form-control" placeholder="Belopp" id="purchase-amount">
           <!--
           <span class="input-group-addon">MOMS</span>
-          <!-- <input type="number" class="form-control" placeholder="VAT" id="purchase-vat"> -->
+           <input type="number" class="form-control" placeholder="VAT" id="purchase-vat"> -->
           <span class="input-group-addon pos-example__input-group-addon__no-padding">
-            <a class="btn btn-primary pos-example__btn-flat" href="#purchase" role="button">Betalning &raquo;</a>
+            <a class="btn btn-primary pos-example__btn-flat" href="#purchase" role="button">Ta betalt &raquo;</a>
           </span>
         </div>
       </div>
@@ -99,7 +99,7 @@
         <p>Ange belopp för retur inklusive moms.</p>
         <div class="input-group">
           <span class="input-group-addon">SEK</span>
-          <input type="number" class="form-control" placeholder="Amount" id="refund-amount">
+          <input type="number" class="form-control" placeholder="Belopp" id="refund-amount">
           <span class="input-group-addon pos-example__input-group-addon__no-padding">
             <a class="btn btn-default pos-example__btn-flat" href="#refund" role="button">Retur &raquo;</a>
           </span>
@@ -162,131 +162,29 @@
 }</textarea>
         </div>
         <a class="btn btn-default" href="#print" role="button">Print &raquo;</a>
-      </div>
+      </div> -->
       <div class="col-md-4">
-        <h2>Utilities</h2>
-        <p>Various utility functions to query terminal connectivity, information and/or set the interface language. The application version refers to the version of the (.NET) software that integrates with the Baxi API. The terminal software version can be found under the terminal information. All output is viewable via <i>Terminal output</i>.</p>
+        <h2>Verktyg</h2>
+        <p>Felsökning av terminal.</p>
         <ul class="pos-example__list pos-example__utilities-list">
           <li>
             <label>
-              <input name="utilities" type="radio" value="ping-host" checked=""> Test terminal connection (USB)
+              <input name="utilities" type="radio" value="ping-host" checked=""> Testa koppling mot betalterminal (USB)
             </label>
           </li>
           <li>
             <label>
-              <input name="utilities" type="radio" value="change-language"> Change terminal language
+              <input name="utilities" type="radio" value="get-info"> Terminalinfo
             </label>
           </li>
           <li>
             <label>
-              <input name="utilities" type="radio" value="get-version"> Get application version
-            </label>
-          </li>
-          <li>
-            <label>
-              <input name="utilities" type="radio" value="get-info"> Get terminal information
-            </label>
-          </li>
-          <li>
-            <label>
-              <input name="utilities" type="radio" value="optional-data"> Generate <i>OptionalData</i> JSON blob
-            </label>
-          </li>
-          <li>
-            <label>
-              <input name="utilities" type="radio" value="fetch-account"> Fetch Nets account information
-            </label>
-          </li>
-          <li>
-            <label>
-              <input name="utilities" type="radio" value="update-terminal"> Update/check terminal version
+              <input name="utilities" type="radio" value="update-terminal"> Uppdatering av programvara (betalterminal)
             </label>
           </li>
         </ul>
-        <div class="dropdown dropup js-pos-example__utilities-language-container pos-example__utilities-language-container hidden">
-          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-            Language <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu pos-example__utilities-language-selector">
-            <li>
-              <label>
-                <input name="languages" type="radio" value="gb">
-                <span class="flag flag-gb" alt="English"></span>
-              </label>
-            </li>
-            <li>
-              <label>
-                <input name="languages" type="radio" value="fi">
-                <span class="flag flag-fi" alt="Finnish"></span>
-              </label>
-            </li>
-            <li>
-              <label>
-                <input name="languages" type="radio" value="sv">
-                <span class="flag flag-se" alt="Swedish"></span>
-              </label>
-            </li>
-            <li>
-              <label>
-                <input name="languages" type="radio" value="da">
-                <span class="flag flag-dk" alt="Danish"></span>
-              </label>
-            </li>
-            <li>
-              <label>
-                <input name="languages" type="radio" value="no">
-                <span class="flag flag-no" alt="Norwegian"></span>
-              </label>
-            </li>
-            <li>
-              <label>
-                <input name="languages" type="radio" value="de">
-                <span class="flag flag-de" alt="German"></span>
-              </label>
-            </li>
-            <li>
-              <label>
-                <input name="languages" type="radio" value="hu">
-                <span class="flag flag-hu" alt="Hungarian"></span>
-              </label>
-            </li>
-            <li>
-              <label>
-                <input name="languages" type="radio" value="et">
-                <span class="flag flag-ee" alt="Estonian"></span>
-              </label>
-            </li>
-            <li>
-              <label>
-                <input name="languages" type="radio" value="pl">
-                <span class="flag flag-pl" alt="Polish"></span>
-              </label>
-            </li>
-          </ul>
+                <a class="btn btn-default js-process-utility-btn" href="#process-utility" role="button">Utför &raquo;</a>
         </div>
-        <div class="row js-pos-example__utilities-optional-data-container pos-example__utilities-optional-data-container hidden">
-          <div class="input-group">
-            <span class="input-group-addon">txnref</span>
-            <input type="text" class="form-control" id="txnref">
-          </div>
-          <div class="input-group">
-            <span class="input-group-addon">autodcc</span>
-            <input type="number" class="form-control" placeholder="1" id="autodcc">
-          </div>
-          <div class="input-group">
-            <span class="input-group-addon">merch</span>
-            <input type="number" class="form-control" id="merch">
-          </div>
-        </div>
-        <a class="btn btn-default js-process-utility-btn" href="#process-utility" role="button">Process &raquo;</a>
-      </div>
-      <div class="col-md-2">
-        <h2>Reconcile</h2>
-        <p>Initiate (manual) reconciliation. To configure automatic reconciliation for a terminal, contact Nets.</p>
-        <p>
-         <a class="btn btn-default" href="#reconcile" role="button">Reconcile &raquo;</a>
-       </p>
-      </div> -->
       <div class="col-md-2">
         <h2>Avbryt</h2>
         <p>Avbryter aktuell transaktion.</p>
@@ -298,19 +196,6 @@
 
     <hr>
 
-  </div>
-
-<!--
-  <script>
-    // Optional: Google Analytics
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-59194056-5', 'auto'); // TODO: change GA User Agent ID to your own
-    ga('send', 'pageview');
-  </script>
--->
   <script src="js/vendor/jquery-1.11.2.min.js"></script>
   <script src="js/vendor/bootstrap-3.3.7.min.js"></script>
   <script src="js/main.js"></script>
