@@ -64,12 +64,12 @@ $(function () {
 
     $display.html(`
       <dl class="pos-example__term-info">
-        <h5 class="pos-example__term-info-title">Terminal info</h3>
+        <h5 class="pos-example__term-info-title">TERMINAL - v0.2b</h3>
         ${html.join('\n')}
       </dl>
     `.trim())
 
-    $('.js-pos-example__output-view-term-model').text(type || 'Terminal disconnected!')
+    $('.js-pos-example__output-view-term-model').text(type || 'Ingen kontakt med betalterminal!')
 
     if (SUPPORTED_TERMINAL_TYPES.iPP350 === (info.type || '').slice(0, 2)) {
       $('input[name="reports"][value="custom"]').attr('disabled', true)
@@ -191,7 +191,7 @@ $(function () {
 
   function onReady (payload) {
     terminal.log(payload, 'onReady', '#0091ff')
-    addLog(payload || 'Terminal redo!', 'ready')
+    addLog(payload || 'AVVAKTAR', 'ready')
   }
 
   function onError (payload) {
@@ -217,7 +217,7 @@ $(function () {
   function isEmptyObject (obj) { return !(obj && Object.keys(obj).length) }
 
   function addLog (message, type) {
-    var timestamp = (new Date()).toLocaleTimeString(sv-SE)
+    var timestamp = (new Date()).toLocaleTimeString()
 
     logs.unshift(`<span class="log-${type || 'default'}">${timestamp} | ${message}</span>`)
 

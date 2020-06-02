@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>MekoNets 0.1b</title>
+  <title>MekoNets 0.2b (DEV)</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,7 +21,7 @@
   <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="/">MekoNets 0.1b</a>
+        <a class="navbar-brand" href="/"><img src="img/header.png"></a>
       </div>
     </div>
   </nav>
@@ -105,6 +105,13 @@
           </span>
         </div>
       </div>
+      <div class="col-md-3">
+        <h2>Avbryt</h2>
+        <p>Annullera påbörjad transaktion.</p>
+        <p>
+          <a class="btn btn-danger" href="#cancel" role="button">Avbryt &raquo;</a>
+        </p>
+      </div>
     </div>
     <!--
     <div class="row">
@@ -163,6 +170,9 @@
         </div>
         <a class="btn btn-default" href="#print" role="button">Print &raquo;</a>
       </div> -->
+
+
+
       <div class="col-md-4">
         <h2>Verktyg</h2>
         <p>Felsökning av terminal.</p>
@@ -185,14 +195,14 @@
         </ul>
                 <a class="btn btn-default js-process-utility-btn" href="#process-utility" role="button">Utför &raquo;</a>
         </div>
-      <div class="col-md-2">
-        <h2>Avbryt</h2>
-        <p>Avbryter aktuell transaktion.</p>
-        <p>
-          <a class="btn btn-danger" href="#cancel" role="button">Avbryt &raquo;</a>
-        </p>
-      </div>
-    </div>
+        <div class="col-md-4">
+          <h2>Dagsavslut</h2>
+          <p>Initiera manuellt dagsavslut. Automatiska dagsavslut utförs en gång per dygn.</p>
+          <p>
+           <a class="btn btn-default" href="#reconcile" role="button">Utför &raquo;</a>
+         </p>
+        </div>
+     </div>
 
     <hr>
 
