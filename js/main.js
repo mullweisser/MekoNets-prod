@@ -16,6 +16,7 @@ $(function () {
   }
 
   terminal.onLoaded = (payload) => {
+    setProcessing(true)
     terminal.log(payload, 'onLoaded', 'magenta')
     handleAppLoaded().then(handleTerminalReady).then(init).catch(e => console.log('Failed to initialize the app.', e))
   }
@@ -177,6 +178,7 @@ $(function () {
     terminal.onSuccess = function (payload) {
       addLog(payload.TruncatedPan || 'Godkänt!', 'success')
       terminal.log(payload, 'onSuccess', 'green')
+      setTimeout(() => {  window.location.reload(true); }, 2000)
 
       if (printRows.length) {
         isIPP350 ? sendToPrinter(printRows.slice()) : _printCustom(preparePrintObj(printRows.slice()))
@@ -198,7 +200,7 @@ $(function () {
 
   function onReady (payload) {
     terminal.log(payload, 'onReady', '#0091ff')
-    addLog(payload || 'AVVAKTAR', 'ready')
+    addLog(payload || 'REDO!', 'ready')
   }
 
   function onError (payload) {
