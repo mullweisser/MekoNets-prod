@@ -16,8 +16,7 @@ $(function () {
     init()
   }
 
-  terminal.onLoaded = (payload) => {
-    setProcessing(true)
+  terminal.onLoaded = (payload) => {)
     terminal.log(payload, 'onLoaded', 'magenta')
     handleAppLoaded().then(handleTerminalReady).then(init).catch(e => console.log('Failed to initialize the app.', e))
   }
