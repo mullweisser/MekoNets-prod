@@ -122,18 +122,19 @@ $(function () {
           break
         case 'purchase':
           process(() => { return makePurchase() });
+          // $('input[type="number"]').val("");
           break
         case 'reverse':
           process(() => { return reversePurchase() })
-          $('input[type="number"]').val("");
+          // $('input[type="number"]').val("");
           break
         case 'refund':
           process(() => { return refundPurchase() })
-          $('input[type="number"]').val("");
+          // $('input[type="number"]').val("");
           break
         case 'cancel':
           process(() => { return cancel() }, { immediate: true })
-          $('input[type="number"]').val("");
+          // $('input[type="number"]').val("");
           break
         case 'reconcile':
           process(() => { return reconcile() })
@@ -178,7 +179,7 @@ $(function () {
     terminal.onSuccess = function (payload) {
       addLog(payload.TruncatedPan || 'Godkänt!', 'success')
       terminal.log(payload, 'onSuccess', 'green')
-      setTimeout(() => {  window.location.reload(true); }, 2000)
+      setTimeout(() => {  window.location.reload(true); }, 5000)
 
       if (printRows.length) {
         isIPP350 ? sendToPrinter(printRows.slice()) : _printCustom(preparePrintObj(printRows.slice()))
