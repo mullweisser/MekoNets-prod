@@ -76,6 +76,7 @@ $(function () {
     if (SUPPORTED_TERMINAL_TYPES.iPP350 === (info.type || '').slice(0, 2)) {
       $('input[name="reports"][value="custom"]').attr('disabled', true)
       isIPP350 = true
+      setProcessing(false)
     }
   }
 
@@ -202,11 +203,13 @@ $(function () {
   function onReady (payload) {
     terminal.log(payload, 'onReady', '#0091ff')
     addLog(payload || 'REDO!', 'ready')
+    setProcessing(false)
   }
 
   function onError (payload) {
     addLog(payload.message, 'error')
     terminal.log(payload, 'onError', 'red')
+    setProcessing(false)
   }
 
   function preparePrintObj (printRows) {
