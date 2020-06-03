@@ -11,7 +11,8 @@ $(function () {
   var printRows = []
 
   if (isEmptyObject(terminal)) {
-    console.info('POS environment not available. Please run the application in .NET context.')
+    console.info('MekoNets only works if accessed from the MekoNets application. Please try again!')
+    alert("MekoNets only works if accessed from the MekoNets application. Please try again!");
     init()
   }
 
@@ -121,7 +122,6 @@ $(function () {
           break
         case 'purchase':
           process(() => { return makePurchase() });
-          $('input[type="number"]').val("");
           break
         case 'reverse':
           process(() => { return reversePurchase() })
