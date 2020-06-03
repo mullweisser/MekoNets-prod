@@ -105,6 +105,8 @@ $(function () {
       language && terminal.changeLanguage(language)
     })
 
+
+    
     $('body').on('click', 'a', function (e) {
       var $link = $(e.currentTarget)
       var section = ($link.attr('href') || '').slice(1)
@@ -117,16 +119,20 @@ $(function () {
           toggleOutputView()
           break
         case 'purchase':
-          process(() => { return makePurchase() })
+          process(() => { return makePurchase() });
+          $('input[type="number"]').val("");
           break
         case 'reverse':
           process(() => { return reversePurchase() })
+          $('input[type="number"]').val("");
           break
         case 'refund':
           process(() => { return refundPurchase() })
+          $('input[type="number"]').val("");
           break
         case 'cancel':
           process(() => { return cancel() }, { immediate: true })
+          $('input[type="number"]').val("");
           break
         case 'reconcile':
           process(() => { return reconcile() })
@@ -139,6 +145,7 @@ $(function () {
           handleUtilities($input.val(), $input)
           break
       }
+      
     })
 
     $('#merchant-id').on('change', (e) => {
