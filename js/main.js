@@ -11,12 +11,11 @@ $(function () {
   var printRows = []
 
   if (isEmptyObject(terminal)) {
-    console.info('MekoNets only works if accessed from the MekoNets application. Please try again!')
-    alert("MekoNets only works if accessed from the MekoNets application. Please try again!");
+    console.info('POS environment not available. Please run the application in .NET context.')
     init()
   }
 
-  terminal.onLoaded = (payload) => {)
+  terminal.onLoaded = (payload) => {
     terminal.log(payload, 'onLoaded', 'magenta')
     handleAppLoaded().then(handleTerminalReady).then(init).catch(e => console.log('Failed to initialize the app.', e))
   }
@@ -106,8 +105,6 @@ $(function () {
       language && terminal.changeLanguage(language)
     })
 
-
-    
     $('body').on('click', 'a', function (e) {
       var $link = $(e.currentTarget)
       var section = ($link.attr('href') || '').slice(1)
@@ -120,20 +117,16 @@ $(function () {
           toggleOutputView()
           break
         case 'purchase':
-          process(() => { return makePurchase() });
-          // $('input[type="number"]').val("");
+          process(() => { return makePurchase() })
           break
         case 'reverse':
           process(() => { return reversePurchase() })
-          // $('input[type="number"]').val("");
           break
         case 'refund':
           process(() => { return refundPurchase() })
-          // $('input[type="number"]').val("");
           break
         case 'cancel':
           process(() => { return cancel() }, { immediate: true })
-          // $('input[type="number"]').val("");
           break
         case 'reconcile':
           process(() => { return reconcile() })
@@ -146,7 +139,6 @@ $(function () {
           handleUtilities($input.val(), $input)
           break
       }
-      
     })
 
     $('#merchant-id').on('change', (e) => {
@@ -178,7 +170,6 @@ $(function () {
     terminal.onSuccess = function (payload) {
       addLog(payload.TruncatedPan || 'Godkänt!', 'success')
       terminal.log(payload, 'onSuccess', 'green')
-      setTimeout(() => {  window.location.reload(true); }, 5000)
 
       if (printRows.length) {
         isIPP350 ? sendToPrinter(printRows.slice()) : _printCustom(preparePrintObj(printRows.slice()))
@@ -189,16 +180,18 @@ $(function () {
 
     terminal.onError = function (payload) {
       onError(payload)
+      setProcessing(false)
     }
 
     terminal.onReady = function (payload) {
       onReady(payload)
+      setProcessing(false)
     }
   }
 
   function onReady (payload) {
     terminal.log(payload, 'onReady', '#0091ff')
-    addLog(payload || 'REDO!', 'ready')
+    addLog(payload || 'AVVAKTAR', 'ready')
   }
 
   function onError (payload) {
